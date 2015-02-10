@@ -1,9 +1,9 @@
 #include "Tutorial2.h"
 #include "Gizmos.h"
 
-#include "FlyCamera.h"
-#include "GridMesh.h"
-#include "CubeMesh.h"
+#include "Camera/FlyCamera.h"
+#include "DefaultMeshes/GridMesh.h"
+#include "DefaultMeshes/CubeMesh.h"
 
 bool Tutorial2::Startup()
 {

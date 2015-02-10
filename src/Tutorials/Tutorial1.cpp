@@ -1,7 +1,7 @@
 #include "Tutorial1.h"
 #include "Gizmos.h"
 
-#include "FlyCamera.h"
+#include "Camera/FlyCamera.h"
 
 bool Tutorial1::Startup()
 {

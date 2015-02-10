@@ -1,7 +1,7 @@
 #ifndef TUTORIAL_2_H_
 #define TUTORIAL_2_H_
 
-#include "GLApplication.h"
+#include "Engine/GLApplication.h"
 
 class GridMesh;
 class CubeMesh;

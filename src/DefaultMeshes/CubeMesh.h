@@ -1,8 +1,8 @@
 #ifndef _CUBE_MESH_H_
 #define _CUBE_MESH_H_
 
-#include "Renderable.h"
-#include <gl_core_4_4.h>
+#include "Engine/Renderable.h"
+#include <Engine/gl_core_4_4.h>
 #include <GLFW/glfw3.h>
 
 class CubeMesh : public Renderable

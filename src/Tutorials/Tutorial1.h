@@ -1,7 +1,7 @@
 #ifndef TUTORIAL_1_H_
 #define TUTORIAL_1_H_
 
-#include "GLApplication.h"
+#include "Engine/GLApplication.h"
 
 class Tutorial1 : public GLApplication
 {
