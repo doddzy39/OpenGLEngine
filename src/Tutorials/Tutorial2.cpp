@@ -1,7 +1,7 @@
 #include "Tutorial2.h"
 #include "Gizmos.h"
 
-#include "Camera/FlyCamera.h"
+#include "Cameras/FlyCamera.h"
 #include "DefaultMeshes/GridMesh.h"
 #include "DefaultMeshes/CubeMesh.h"
 

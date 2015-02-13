@@ -6,7 +6,6 @@
 #include <thread>
 #include <mutex>
 
-#define GLM_SWIZZLE	
 #include "glm/glm.hpp"
 #include "glm/gtc/quaternion.hpp"
 #include "glm/gtc/epsilon.hpp"

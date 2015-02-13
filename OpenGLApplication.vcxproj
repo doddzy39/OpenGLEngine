@@ -12,26 +12,40 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dep\aieutilities\Gizmos.cpp" />
-    <ClCompile Include="src\Camera\FlyCamera.cpp" />
+    <ClCompile Include="dep\tinyobjloader\tiny_obj_loader.cc" />
+    <ClCompile Include="src\Cameras\FlyCamera.cpp" />
+    <ClCompile Include="src\DefaultMeshes\ObjMesh.cpp" />
     <ClCompile Include="src\Engine\BaseCamera.cpp" />
     <ClCompile Include="src\Engine\GLApplication.cpp" />
     <ClCompile Include="src\Engine\gl_core_4_4.c" />
+    <ClCompile Include="src\Engine\Material.cpp" />
+    <ClCompile Include="src\Engine\MaterialHandler.cpp" />
     <ClCompile Include="src\Engine\Renderable.cpp" />
+    <ClCompile Include="src\Engine\ShaderHandler.cpp" />
+    <ClCompile Include="src\Engine\TextureLoader.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Tutorials\Tutorial1.cpp" />
     <ClCompile Include="src\Tutorials\Tutorial2.cpp" />
+    <ClCompile Include="src\Tutorials\Tutorial2B.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dep\aieutilities\Gizmos.h" />
-    <ClInclude Include="src\Camera\FlyCamera.h" />
+    <ClInclude Include="dep\tinyobjloader\tiny_obj_loader.h" />
+    <ClInclude Include="src\Cameras\FlyCamera.h" />
     <ClInclude Include="src\DefaultMeshes\CubeMesh.h" />
+    <ClInclude Include="src\DefaultMeshes\ObjMesh.h" />
     <ClInclude Include="src\DefaultMeshes\GridMesh.h" />
     <ClInclude Include="src\Engine\BaseCamera.h" />
     <ClInclude Include="src\Engine\GLApplication.h" />
     <ClInclude Include="src\Engine\gl_core_4_4.h" />
+    <ClInclude Include="src\Engine\Material.h" />
+    <ClInclude Include="src\Engine\MaterialHandler.h" />
     <ClInclude Include="src\Engine\Renderable.h" />
+    <ClInclude Include="src\Engine\ShaderHandler.h" />
+    <ClInclude Include="src\Engine\TextureLoader.h" />
     <ClInclude Include="src\Tutorials\Tutorial1.h" />
     <ClInclude Include="src\Tutorials\Tutorial2.h" />
+    <ClInclude Include="src\Tutorials\Tutorial2B.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{37791828-0C06-4937-A5AC-CA94A6102B41}</ProjectGuid>
@@ -75,13 +89,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>GLM_SWIZZLE;GLM_FORCE_PURE;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)dep\glfw\include;$(SolutionDir)dep\glm;$(SolutionDir)dep\aieutilities;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)dep\tinyobjloader;$(SolutionDir)dep\FBX_LOADER\inc;$(SolutionDir)dep\glfw\include;$(SolutionDir)dep\glm;$(SolutionDir)dep\stb-master;$(SolutionDir)dep\aieutilities;$(ProjectDir)src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)dep\glfw\lib-vc2012;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dep\glfw\lib-vc2012;$(SolutionDir)dep\FBX_LOADER\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;fbx_loader_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

@@ -15,63 +15,105 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Tutorials\Tutorial1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Tutorials\Tutorial2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Camera\FlyCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\BaseCamera.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\gl_core_4_4.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\GLApplication.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Engine\Renderable.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="dep\aieutilities\Gizmos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tutorials\Tutorial2B.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\BaseCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\GLApplication.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\gl_core_4_4.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Renderable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tutorials\Tutorial1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tutorials\Tutorial2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cameras\FlyCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DefaultMeshes\ObjMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dep\tinyobjloader\tiny_obj_loader.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\ShaderHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\MaterialHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Engine\TextureLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dep\aieutilities\Gizmos.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tutorials\Tutorial2B.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DefaultMeshes\CubeMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DefaultMeshes\GridMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\BaseCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\GLApplication.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\gl_core_4_4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\Renderable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="src\Tutorials\Tutorial1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Tutorials\Tutorial2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Camera\FlyCamera.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="src\Cameras\FlyCamera.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DefaultMeshes\CubeMesh.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="src\DefaultMeshes\ObjMesh.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\DefaultMeshes\GridMesh.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="dep\tinyobjloader\tiny_obj_loader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\BaseCamera.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="src\Engine\ShaderHandler.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\gl_core_4_4.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="src\Engine\Material.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\GLApplication.h">
-      <Filter>Resource Files</Filter>
+    <ClInclude Include="src\Engine\MaterialHandler.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\Engine\Renderable.h">
-      <Filter>Resource Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dep\aieutilities\Gizmos.h">
+    <ClInclude Include="src\Engine\TextureLoader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

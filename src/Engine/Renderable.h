@@ -5,6 +5,7 @@
 #include <glm/ext.hpp>
 
 class BaseCamera;
+class Material;
 
 class Renderable
 {
@@ -14,8 +15,6 @@ public:
 		glm::vec4 colour;
 	};
 
-
-
 	Renderable();
 	~Renderable();
 
@@ -24,11 +23,16 @@ public:
 	//For now, pass in the render location - we'll make this a full node
 	//system later
 	void Render(BaseCamera* pCamera, glm::mat4 transform);
-protected:
-	static unsigned int CreateStandardShader();
-	
-	//static unsigned int CreateErrorShader();
 
+	const unsigned int& GetVBO() const { return m_VBO; };
+	const unsigned int& GetIBO() const { return m_IBO; };
+	const unsigned int& GetVAO() const { return m_VAO; };
+
+	void SetMaterial(Material* a_pMaterial);
+	void SetMaterial(std::string& a_strMaterial);
+	Material* GetMaterial();
+
+protected:
 	unsigned int m_uiNumberOfIndices;
 	unsigned int m_uiNumberOfVerts;
 
@@ -36,16 +40,10 @@ protected:
 	unsigned int m_VBO;
 	unsigned int m_IBO;
 
-	unsigned int m_uiShaderProgram;
-private:
-	void SetupShaderLocations();
 
+private:	
 
-	//Other 'material' information until we set up a full material class
-	int m_iModelMatrixShaderLocation;
-	int m_iViewMatrixShaderLocation;
-	int m_iProjectionMatrixShaderLocation;
-
-	static int sm_iStandardShaderProgram;
+	Material* m_pMaterial;
+	std::string m_strMaterialName;
 };
 #endif

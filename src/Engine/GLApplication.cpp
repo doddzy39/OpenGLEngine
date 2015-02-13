@@ -4,6 +4,9 @@
 #include "BaseCamera.h"
 #include <GLFW\glfw3.h>
 
+#include "ShaderHandler.h"
+#include "MaterialHandler.h"
+
 GLApplication::GLApplication(std::string appName, unsigned int uiWidth, unsigned int uiHeight)
 {
 	m_strAppName = appName;
@@ -56,7 +59,13 @@ bool GLApplication::InitializeOpenGL()
 void GLApplication::Run()
 {
 	InitializeOpenGL();
+	
+	//Initialize Shader and Material Handler
+	ShaderHandler::Initialize();
+	MaterialHandler::Initialize();
+
 	Startup();
+
 
 	assert(m_pCamera != NULL && "Camera not initialized");
 	assert(m_pCamera->GetPerspectiveSet() == true && "Camera Perspective not set");
@@ -72,6 +81,11 @@ void GLApplication::Run()
 		Gizmos::clear();
 
 		bRunning = Update(m_fDeltaTime);
+
+
+		ShaderHandler::Get()->SetEyePosition(glm::vec4(m_pCamera->GetPosition(), 1));
+		ShaderHandler::Get()->SetProjectionMatrix(m_pCamera->GetProjection());
+		ShaderHandler::Get()->SetViewMatrix(m_pCamera->GetView());
 		Render();
 
 		Gizmos::draw(m_pCamera->GetProjectionView());
@@ -84,6 +98,9 @@ void GLApplication::Run()
 
 	Gizmos::destroy();
 
+	MaterialHandler::Shutdown();
+	ShaderHandler::Shutdown();
+	
 	glfwDestroyWindow(m_pWindow);
 	glfwTerminate();
 

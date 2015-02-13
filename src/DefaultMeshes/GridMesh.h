@@ -12,7 +12,6 @@ public:
 
 	void Create()
 	{
-		m_uiShaderProgram = Renderable::CreateStandardShader();
 
 		m_uiNumberOfVerts = m_rows * m_cols;
 		m_uiNumberOfIndices = (m_rows - 1) * (m_cols - 1) * 6;

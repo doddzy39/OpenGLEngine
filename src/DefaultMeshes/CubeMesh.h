@@ -2,7 +2,7 @@
 #define _CUBE_MESH_H_
 
 #include "Engine/Renderable.h"
-#include <Engine/gl_core_4_4.h>
+#include "Engine/gl_core_4_4.h"
 #include <GLFW/glfw3.h>
 
 class CubeMesh : public Renderable
@@ -12,9 +12,8 @@ public:
 
 	void Create()
 	{
-		m_uiShaderProgram = Renderable::CreateStandardShader();
 
-		m_uiNumberOfVerts = 12;
+		m_uiNumberOfVerts = 8;
 		m_uiNumberOfIndices = 36;
 
 		float fHalfSize = m_fSize * 0.5f;
