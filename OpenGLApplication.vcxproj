@@ -27,6 +27,7 @@
     <ClCompile Include="src\Tutorials\Tutorial1.cpp" />
     <ClCompile Include="src\Tutorials\Tutorial2.cpp" />
     <ClCompile Include="src\Tutorials\Tutorial2B.cpp" />
+    <ClCompile Include="src\Tutorials\Tutorial3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dep\aieutilities\Gizmos.h" />
@@ -46,6 +47,7 @@
     <ClInclude Include="src\Tutorials\Tutorial1.h" />
     <ClInclude Include="src\Tutorials\Tutorial2.h" />
     <ClInclude Include="src\Tutorials\Tutorial2B.h" />
+    <ClInclude Include="src\Tutorials\Tutorial3.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{37791828-0C06-4937-A5AC-CA94A6102B41}</ProjectGuid>
@@ -95,7 +97,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)dep\glfw\lib-vc2012;$(SolutionDir)dep\FBX_LOADER\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;opengl32.lib;fbx_loader_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
