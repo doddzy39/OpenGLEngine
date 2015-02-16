@@ -22,6 +22,7 @@ protected:
 	OBJMesh* m_pMeshToDraw;
 	unsigned int m_uiShader;
 
+
 private:
 };
 

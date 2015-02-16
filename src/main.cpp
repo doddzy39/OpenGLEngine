@@ -1,11 +1,11 @@
 #include "Engine/gl_core_4_4.h"
 #include <GLFW/glfw3.h>
 
-#include "Tutorials/Tutorial3.h"
+#include "Tutorials/Tutorial4.h"
 
 int main()
 {
-	Tutorial3 app;
+	Tutorial4 app;
 
 	app.Run();
 	

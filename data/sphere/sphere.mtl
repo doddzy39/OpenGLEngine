@@ -6,6 +6,6 @@ Ni 1
 Ns 400
 Tf 1 1 1
 d 1
-map_Kd Sphere.png
-map_Ns Sphere_Normal.png
-	
+map_Kd sphere.png
+map_Ka night.png
+map_Ns normal.png

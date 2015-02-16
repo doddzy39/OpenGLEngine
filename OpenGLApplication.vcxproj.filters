@@ -66,6 +66,9 @@
     <ClCompile Include="src\Tutorials\Tutorial3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Tutorials\Tutorial4.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dep\aieutilities\Gizmos.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Tutorials\Tutorial3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tutorials\Tutorial4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

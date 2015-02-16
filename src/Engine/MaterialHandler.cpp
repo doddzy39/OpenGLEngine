@@ -60,6 +60,7 @@ MaterialHandler::~MaterialHandler()
 
 void MaterialHandler::ConfigureOpenGLTextureSlots( unsigned int uiShaderID )
 {
+	glUseProgram(uiShaderID);
 	//Need to tell the shader where to find textures to use (if the shader uses them)
 	GLuint shaderHandle = glGetUniformLocation(uiShaderID, "diffuseTexture");
 	glUniform1i(shaderHandle, Material::DIFFUSE);

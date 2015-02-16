@@ -10,22 +10,18 @@ layout(location=5) in vec3 Tangent;
 out vec2 vTexCoord;
 out vec4 vColour;
 out vec3 vNormal;
-out vec3 vBiNormal;
-out vec3 vTangent;
 
 uniform mat4 Projection;
 uniform mat4 View;
-uniform mat4 Model;
+uniform mat4 Model;	
+
 
 void main() 
 {
 	vTexCoord = TexCoord;
 	vColour = Colour;
+	vNormal = mat3(Model) * Normal;
 
 	mat4 PVM = Projection * View * Model;
-	vNormal = mat3(Model) * Normal;
-	vBiNormal = mat3(Model) * BiNormal;
-	vTangent = mat3(Model) * Tangent;
-
 	gl_Position= PVM * Position;
 }

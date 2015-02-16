@@ -239,7 +239,7 @@ unsigned int ShaderHandler::CreateProgram(GLuint vs, GLuint tcs, GLuint tes, GLu
 	if (success == GL_FALSE)
 	{
 		int infoLogLength = 0;
-		glGetShaderiv(handle, GL_INFO_LOG_LENGTH, &infoLogLength);
+		glGetProgramiv(handle, GL_INFO_LOG_LENGTH, &infoLogLength);
 		char* infoLog = new char[infoLogLength];
 
 		glGetShaderInfoLog(handle, infoLogLength, 0, infoLog);

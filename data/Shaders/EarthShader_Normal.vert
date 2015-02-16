@@ -15,17 +15,19 @@ out vec3 vTangent;
 
 uniform mat4 Projection;
 uniform mat4 View;
-uniform mat4 Model;
+uniform mat4 Model;	
+
+uniform vec3 LightDir = vec3(1, 0, 0);
 
 void main() 
 {
 	vTexCoord = TexCoord;
 	vColour = Colour;
 
-	mat4 PVM = Projection * View * Model;
-	vNormal = mat3(Model) * Normal;
-	vBiNormal = mat3(Model) * BiNormal;
-	vTangent = mat3(Model) * Tangent;
+	vNormal = Normal;
+	vBiNormal = BiNormal;
+	vTangent = Tangent;
 
+	mat4 PVM = Projection * View * Model;
 	gl_Position= PVM * Position;
 }
