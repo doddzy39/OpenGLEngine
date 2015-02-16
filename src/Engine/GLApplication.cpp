@@ -51,6 +51,7 @@ bool GLApplication::InitializeOpenGL()
 
 	glClearColor( 0.25f, 0.25f, 0.25f, 1 );
 	glEnable(GL_DEPTH_TEST); // enables the depth buffer
+	glEnable(GL_FRONT_AND_BACK);
 
 	return true;
 }

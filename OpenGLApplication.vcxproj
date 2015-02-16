@@ -15,6 +15,7 @@
     <ClCompile Include="dep\tinyobjloader\tiny_obj_loader.cc" />
     <ClCompile Include="src\Cameras\FlyCamera.cpp" />
     <ClCompile Include="src\DefaultMeshes\ObjMesh.cpp" />
+    <ClCompile Include="src\DefaultMeshes\SkyboxMesh.cpp" />
     <ClCompile Include="src\Engine\BaseCamera.cpp" />
     <ClCompile Include="src\Engine\GLApplication.cpp" />
     <ClCompile Include="src\Engine\gl_core_4_4.c" />
@@ -37,6 +38,7 @@
     <ClInclude Include="src\DefaultMeshes\CubeMesh.h" />
     <ClInclude Include="src\DefaultMeshes\ObjMesh.h" />
     <ClInclude Include="src\DefaultMeshes\GridMesh.h" />
+    <ClInclude Include="src\DefaultMeshes\SkyboxMesh.h" />
     <ClInclude Include="src\Engine\BaseCamera.h" />
     <ClInclude Include="src\Engine\GLApplication.h" />
     <ClInclude Include="src\Engine\gl_core_4_4.h" />

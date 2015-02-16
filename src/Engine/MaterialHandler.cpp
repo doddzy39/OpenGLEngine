@@ -62,7 +62,7 @@ void MaterialHandler::ConfigureOpenGLTextureSlots( unsigned int uiShaderID )
 {
 	glUseProgram(uiShaderID);
 	//Need to tell the shader where to find textures to use (if the shader uses them)
-	GLuint shaderHandle = glGetUniformLocation(uiShaderID, "diffuseTexture");
+	GLint shaderHandle = glGetUniformLocation(uiShaderID, "diffuseTexture");
 	glUniform1i(shaderHandle, Material::DIFFUSE);
 	shaderHandle = glGetUniformLocation(uiShaderID, "ambientTexture");
 	glUniform1i(shaderHandle, Material::AMBIENT);
@@ -78,6 +78,8 @@ void MaterialHandler::ConfigureOpenGLTextureSlots( unsigned int uiShaderID )
 	glUniform1i(shaderHandle, Material::ALPHA);
 	shaderHandle = glGetUniformLocation(uiShaderID, "displacementTexture");
 	glUniform1i(shaderHandle, Material::DISPLACEMENT);
+	shaderHandle = glGetUniformLocation(uiShaderID, "cubeMap");
+	glUniform1i(shaderHandle, Material::CUBE);
 }
 
 Material* MaterialHandler::GetDefaultErrorMaterial()

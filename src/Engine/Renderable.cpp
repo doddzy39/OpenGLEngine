@@ -38,22 +38,7 @@ Renderable::~Renderable()
 
 void Renderable::Render(BaseCamera* pCamera, glm::mat4 transform)
 {
-	//If no Indices..nothing to render!
-	if (m_uiNumberOfIndices == 0) return;
-
-	if (m_pMaterial == nullptr) //This will only ever happen on the first render
-	{
-		//Attempt to get the material
-		if (MaterialHandler::Get()) m_pMaterial = MaterialHandler::Get()->GetMaterial(m_strMaterialName);
-		//if still null, set to error shader
-		if (MaterialHandler::Get() && m_pMaterial == nullptr) m_pMaterial = MaterialHandler::Get()->GetDefaultErrorMaterial();
-	}
-
-	//Set the material as the current material
-	if (m_pMaterial != nullptr) m_pMaterial->SetAsActiveMaterial();
-	
-	//Set world/model transform
-	m_pMaterial->SetShaderModelMatrix(transform);
+	if(!PrepareToRender(transform)) return;
 
 	//Bind the vertex array for this object
 	glBindVertexArray(m_VAO);
@@ -139,4 +124,26 @@ void Renderable::SetMaterial(std::string& a_strMaterial)
 Material* Renderable::GetMaterial()
 {
 	return m_pMaterial;
+}
+
+bool Renderable::PrepareToRender(glm::mat4 transform)
+{
+	//If no Indices..nothing to render!
+	if (m_uiNumberOfIndices == 0) return false;
+
+	if (m_pMaterial == nullptr) //This will only ever happen on the first render
+	{
+		//Attempt to get the material
+		if (MaterialHandler::Get()) m_pMaterial = MaterialHandler::Get()->GetMaterial(m_strMaterialName);
+		//if still null, set to error shader
+		if (MaterialHandler::Get() && m_pMaterial == nullptr) m_pMaterial = MaterialHandler::Get()->GetDefaultErrorMaterial();
+	}
+
+	//Set the material as the current material
+	if (m_pMaterial != nullptr) m_pMaterial->SetAsActiveMaterial();
+
+	//Set world/model transform
+	m_pMaterial->SetShaderModelMatrix(transform);
+
+	return true;
 }

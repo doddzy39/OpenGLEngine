@@ -6,11 +6,12 @@
 
 class OBJMesh;
 class Shader;
+class SkyboxMesh;
 
 class Tutorial4 : public GLApplication
 {
 public:
-	Tutorial4() : GLApplication("Tutorial 4 - Advanced Texturing and Lighting") {}
+	Tutorial4() : GLApplication("Tutorial 4 - Advanced Texturing and Lighting", 1920, 1200) {}
 	~Tutorial4() {}
 
 	virtual bool Startup();
@@ -20,6 +21,7 @@ public:
 	virtual void Render();
 
 protected:
+	SkyboxMesh*		m_pSkybox;
 	OBJMesh*		m_pMeshToDraw;
 	unsigned int	m_uiShader;
 

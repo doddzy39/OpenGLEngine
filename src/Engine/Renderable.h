@@ -22,7 +22,9 @@ public:
 
 	//For now, pass in the render location - we'll make this a full node
 	//system later
-	void Render(BaseCamera* pCamera, glm::mat4 transform);
+	virtual void Render(BaseCamera* pCamera, glm::mat4 transform);
+
+	bool PrepareToRender(glm::mat4 transform);
 
 	const unsigned int& GetVBO() const { return m_VBO; };
 	const unsigned int& GetIBO() const { return m_IBO; };

@@ -18,7 +18,8 @@ public:
 		GLOSS,
 		NORMAL,
 		ALPHA,
-		DISPLACEMENT
+		DISPLACEMENT,
+		CUBE,
 	};
 
 	char			name[MAX_PATH];

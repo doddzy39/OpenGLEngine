@@ -34,7 +34,7 @@ void main()
 	
 	vec3 lightDir_modelSpace = inverse(mat3(Model)) * LightDir;
 
-	float d = max( 0, dot(ModelN, normalize( lightDir_modelSpace )));
+	float d = max(0.0, dot(ModelN, normalize( lightDir_modelSpace )));
 
 	vec4 dayColour = (LightColour * texture(diffuseTexture, vTexCoord) * d);
 	vec4 nightColour = (texture(ambientTexture, vTexCoord) * (1 - d));

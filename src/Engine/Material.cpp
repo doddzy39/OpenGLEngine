@@ -21,7 +21,14 @@ void Material::SetAsActiveMaterial()
 		if(it->second > 0)
 		{
 			glActiveTexture(GL_TEXTURE0 + it->first);
-			glBindTexture(GL_TEXTURE_2D, it->second);
+			if (it->first != CUBE)
+			{
+				glBindTexture(GL_TEXTURE_2D, it->second);
+			}
+			else
+			{
+				glBindTexture(GL_TEXTURE_CUBE_MAP, it->second);
+			}
 		}
 	}
 }

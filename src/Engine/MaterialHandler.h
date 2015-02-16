@@ -31,6 +31,8 @@ public:
 	Material* GetDefaultScreenAlignedMaterial();
 
 	void SetDefaultShader( unsigned int a_uiShaderID );
+
+	TextureLoader* GetTextureLoader() { return m_pTextureHandler;  }
 private:
 	MaterialHandler();
 	bool DoesMaterialExist( std::string& a_strMaterialName );
