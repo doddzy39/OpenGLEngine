@@ -7,6 +7,7 @@ layout(location=3) in vec2 TexCoord;
 layout(location=4) in vec3 BiNormal;
 layout(location=5) in vec3 Tangent;
 
+out vec4 vPosition;
 out vec2 vTexCoord;
 out vec4 vColour;
 out vec3 vNormal;
@@ -24,6 +25,7 @@ void main()
 	vTexCoord = TexCoord;
 	vColour = Colour;
 
+	vPosition = Model * Position;
 	vNormal = Normal;
 	vBiNormal = BiNormal;
 	vTangent = Tangent;
