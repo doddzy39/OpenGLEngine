@@ -96,7 +96,7 @@
       <AdditionalDependencies>glfw3.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy src\*.h $(SolutionDir)dep\OpenGLApplication\include /sy</Command>
+      <Command>xcopy "src\*.h" "$(SolutionDir)dep\OpenGLApplication\include" /sy</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

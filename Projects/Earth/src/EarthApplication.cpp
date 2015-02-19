@@ -14,6 +14,10 @@ bool EarthApplication::Startup()
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 
+	// Enable blending
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	FlyCamera* pCamera = new FlyCamera();
 	pCamera->SetRotationSpeed(1.0f);
 
@@ -24,9 +28,13 @@ bool EarthApplication::Startup()
 
 	m_pCamera = pCamera;
 
-	m_pMeshToDraw = new OBJMesh("sphere_hires/sphere.obj");
-	m_uiShader = ShaderHandler::Get()->LoadShader("EarthShader", "Shaders/EarthShader_Normal.vert", "Shaders/EarthShader_Normal.frag");
-	m_pMeshToDraw->GetMaterial()->SetShader(m_uiShader);
+	m_pEarthMesh = new OBJMesh("EarthSurface/sphere.obj");
+	m_uiEarthShader = ShaderHandler::Get()->LoadShader("EarthShader", "Shaders/EarthShader_Normal.vert", "Shaders/EarthShader_Normal.frag");
+	m_pEarthMesh->GetMaterial()->SetShader(m_uiEarthShader);
+
+	m_pCloudMesh = new OBJMesh("CloudSurface/sphere.obj");
+	m_uiCloudShader = ShaderHandler::Get()->LoadShader("CloudShader", "Shaders/Clouds.vert", "Shaders/Clouds.frag");
+	m_pCloudMesh->GetMaterial()->SetShader(m_uiCloudShader);
 
 	m_pSkybox = new SkyboxMesh("SpaceSkybox", "png");
 
@@ -37,6 +45,9 @@ bool EarthApplication::Startup()
 	glm::mat4 rot = glm::rotate(glm::radians(23.5f), glm::vec3(1, 0, 0));
 	m_earthTransform = m_earthTransform * scale * rot;
 
+	scale = glm::scale(glm::vec3(3.05f, 3.05f, 3.05f));
+	m_cloudTransform = m_cloudTransform * scale;
+
 	m_fTimeScale = 1.0f;
 
 	return true;
@@ -44,7 +55,7 @@ bool EarthApplication::Startup()
 
 void EarthApplication::Shutdown()
 {
-	delete m_pMeshToDraw;
+	delete m_pEarthMesh;
 	delete m_pSkybox;
 }
 
@@ -58,6 +69,11 @@ bool EarthApplication::Update(double dt)
 
 	m_earthTransform = m_earthTransform * rot;
 
+
+	fRotAmountPerSecond = (glm::pi<float>() * 2) * (1 / 70.f); 
+	rot = glm::rotate(fRotAmountPerSecond * (float)dt, glm::vec3(0, 1, 0));
+	m_cloudTransform = m_cloudTransform * rot;
+
 	return true;
 }
 
@@ -66,7 +82,8 @@ void EarthApplication::Render()
 	//DisplayGrid(20);
 
 
-	m_pMeshToDraw->Render(m_pCamera, m_earthTransform);
+	m_pEarthMesh->Render(m_pCamera, m_earthTransform);
+	m_pCloudMesh->Render(m_pCamera, m_cloudTransform);
 
 	Gizmos::addTransform(glm::mat4(1), 10.0f);
 
