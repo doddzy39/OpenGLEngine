@@ -67,8 +67,8 @@ void FlyCamera::HandleMouseInput(double dt)
 			int width, height;
 			glfwGetFramebufferSize(m_pWindow, &width, &height);
 
-			m_dCursorX = width / 2.0;
-			m_dCursorY = height / 2.0;
+			m_dCursorX = floor(width / 2.0);
+			m_dCursorY = floor(height / 2.0);
 
 			glfwSetCursorPos(m_pWindow, width / 2, height / 2);
 

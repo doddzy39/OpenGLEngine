@@ -23,3 +23,7 @@
 *.exe
 *.out
 *.app
+EngineProject/Debug/
+*.opensdf
+*.sdf
+Projects/Earth/Debug/
