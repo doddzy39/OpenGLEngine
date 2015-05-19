@@ -1,7 +1,7 @@
 #ifndef _FLY_CAMERA_H_
 #define _FLY_CAMERA_H_
 
-#include "Engine/BaseCamera.h"
+#include "Cameras/BaseCamera.h"
 #include <GLFW\glfw3.h>
 
 class FlyCamera : public BaseCamera

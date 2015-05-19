@@ -1,7 +1,7 @@
 #include "GLApplication.h"
 
 #include "Gizmos.h"
-#include "BaseCamera.h"
+#include "Cameras/BaseCamera.h"
 #include <GLFW\glfw3.h>
 
 #include "ShaderHandler.h"

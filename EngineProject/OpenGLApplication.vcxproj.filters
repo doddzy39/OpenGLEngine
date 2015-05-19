@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Engine\BaseCamera.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\Engine\GLApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,15 +51,24 @@
     <ClCompile Include="..\dep\aieutilities\Gizmos.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\SceneGraph\SceneNode.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\LowLevelUtilityClasses\pow2assert.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SceneGraph\SceneObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Cameras\BaseCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\DefaultMeshes\CubeMesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\DefaultMeshes\GridMesh.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Engine\BaseCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\Engine\GLApplication.h">
@@ -99,6 +105,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\dep\tinyobjloader\tiny_obj_loader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneGraph\SceneNode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LowLevelUtilityClasses\pow2assert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SceneGraph\SceneObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Cameras\BaseCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

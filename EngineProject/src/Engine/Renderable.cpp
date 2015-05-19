@@ -2,7 +2,7 @@
 #include "gl_core_4_4.h"
 #include <GLFW/glfw3.h>
 
-#include "BaseCamera.h"
+#include "Cameras/BaseCamera.h"
 #include "Engine/Material.h"
 #include "Engine/MaterialHandler.h"
 

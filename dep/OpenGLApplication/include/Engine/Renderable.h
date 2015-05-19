@@ -4,10 +4,13 @@
 #include <glm/glm.hpp>
 #include <glm/ext.hpp>
 
+#include "SceneGraph/SceneObject.h"
+
+
 class BaseCamera;
 class Material;
 
-class Renderable
+class Renderable : public SceneObject
 {
 public:
 	struct Vertex {

@@ -16,7 +16,7 @@
     <ClCompile Include="src\Cameras\FlyCamera.cpp" />
     <ClCompile Include="src\DefaultMeshes\ObjMesh.cpp" />
     <ClCompile Include="src\DefaultMeshes\SkyboxMesh.cpp" />
-    <ClCompile Include="src\Engine\BaseCamera.cpp" />
+    <ClCompile Include="src\Cameras\BaseCamera.cpp" />
     <ClCompile Include="src\Engine\GLApplication.cpp" />
     <ClCompile Include="src\Engine\gl_core_4_4.c" />
     <ClCompile Include="src\Engine\Material.cpp" />
@@ -24,6 +24,9 @@
     <ClCompile Include="src\Engine\Renderable.cpp" />
     <ClCompile Include="src\Engine\ShaderHandler.cpp" />
     <ClCompile Include="src\Engine\TextureLoader.cpp" />
+    <ClCompile Include="src\LowLevelUtilityClasses\pow2assert.cpp" />
+    <ClCompile Include="src\SceneGraph\SceneNode.cpp" />
+    <ClCompile Include="src\SceneGraph\SceneObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\dep\aieutilities\Gizmos.h" />
@@ -33,7 +36,7 @@
     <ClInclude Include="src\DefaultMeshes\ObjMesh.h" />
     <ClInclude Include="src\DefaultMeshes\GridMesh.h" />
     <ClInclude Include="src\DefaultMeshes\SkyboxMesh.h" />
-    <ClInclude Include="src\Engine\BaseCamera.h" />
+    <ClInclude Include="src\Cameras\BaseCamera.h" />
     <ClInclude Include="src\Engine\GLApplication.h" />
     <ClInclude Include="src\Engine\gl_core_4_4.h" />
     <ClInclude Include="src\Engine\Material.h" />
@@ -41,6 +44,9 @@
     <ClInclude Include="src\Engine\Renderable.h" />
     <ClInclude Include="src\Engine\ShaderHandler.h" />
     <ClInclude Include="src\Engine\TextureLoader.h" />
+    <ClInclude Include="src\LowLevelUtilityClasses\pow2assert.h" />
+    <ClInclude Include="src\SceneGraph\SceneNode.h" />
+    <ClInclude Include="src\SceneGraph\SceneObject.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{37791828-0C06-4937-A5AC-CA94A6102B41}</ProjectGuid>

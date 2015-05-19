@@ -8,6 +8,10 @@
 #include "Engine/ShaderHandler.h"
 #include "Engine/Material.h"
 
+#include "SceneGraph/SceneNode.h"
+
+#include <memory.h>
+
 
 bool EarthApplication::Startup()
 {
@@ -28,35 +32,53 @@ bool EarthApplication::Startup()
 
 	m_pCamera = pCamera;
 
-	m_pEarthMesh = new OBJMesh("EarthSurface/sphere.obj");
-	m_uiEarthShader = ShaderHandler::Get()->LoadShader("EarthShader", "Shaders/EarthShader_Normal.vert", "Shaders/EarthShader_Normal.frag");
-	m_pEarthMesh->GetMaterial()->SetShader(m_uiEarthShader);
 
-	m_pCloudMesh = new OBJMesh("CloudSurface/sphere.obj");
-	m_uiCloudShader = ShaderHandler::Get()->LoadShader("CloudShader", "Shaders/Clouds.vert", "Shaders/Clouds.frag");
-	m_pCloudMesh->GetMaterial()->SetShader(m_uiCloudShader);
+	m_root = std::make_shared<SceneNode>();
 
-	m_pSkybox = new SkyboxMesh("SpaceSkybox", "png");
+	std::unique_ptr<OBJMesh> pEarth = std::make_unique<OBJMesh>("EarthSurface/sphere.obj");
+	//GLuint uiEarthShader = ShaderHandler::Get()->LoadShader("EarthShader", "Shaders/EarthShader_Normal.vert", "Shaders/EarthShader_Normal.frag");
+	//pEarth->GetMaterial()->SetShader(uiEarthShader);
+	//
+	m_root->AttachChild(pEarth->getOwningSceneNodeShardPtr());
+
+	//m_pCloudMesh = new OBJMesh("CloudSurface/sphere.obj");
+	//m_uiCloudShader = ShaderHandler::Get()->LoadShader("CloudShader", "Shaders/Clouds.vert", "Shaders/Clouds.frag");
+	//m_pCloudMesh->GetMaterial()->SetShader(m_uiCloudShader);
+	//
+	//m_pSkybox = new SkyboxMesh("SpaceSkybox", "png");
 
 	glClearColor(0.03f, 0.03f, 0.05f, 1.0f);
 
 
-	glm::mat4 scale = glm::scale(glm::vec3(3.0f, 3.0f, 3.0f));
-	glm::mat4 rot = glm::rotate(glm::radians(23.5f), glm::vec3(1, 0, 0));
-	m_earthTransform = m_earthTransform * scale * rot;
-
-	scale = glm::scale(glm::vec3(3.05f, 3.05f, 3.05f));
-	m_cloudTransform = m_cloudTransform * scale;
-
-	m_fTimeScale = 1.0f;
+	//glm::mat4 scale = glm::scale(glm::vec3(3.0f, 3.0f, 3.0f));
+	//glm::mat4 rot = glm::rotate(glm::radians(23.5f), glm::vec3(1, 0, 0));
+	//m_earthTransform = m_earthTransform * scale * rot;
+	//
+	//scale = glm::scale(glm::vec3(3.05f, 3.05f, 3.05f));
+	//m_cloudTransform = m_cloudTransform * scale;
+	//
+	//m_fTimeScale = 1.0f;
+	//
+	//auto parent = std::make_shared<SceneNode>();
+	//auto child = std::make_shared<SceneNode>();
+	//parent->AttachChild(child);
+	//parent->AttachChild(m_pEarthMesh);
+	//
+	//glm::mat4 tempTransform;
+	//tempTransform[3] = glm::vec4(10, 0, 0, 1);
+	//parent->SetLocalTransform(tempTransform);
+	//
+	//tempTransform[3] = glm::vec4(30, 0, 0, 1);
+	//child->SetGlobalTransform(tempTransform);
 
 	return true;
 }
 
 void EarthApplication::Shutdown()
 {
-	delete m_pEarthMesh;
-	delete m_pSkybox;
+	m_root = nullptr;
+	//delete m_pEarthMesh;
+	//delete m_pSkybox;
 }
 
 bool EarthApplication::Update(double dt)
@@ -64,15 +86,15 @@ bool EarthApplication::Update(double dt)
 	m_pCamera->Update(dt);
 
 
-	float fRotAmountPerSecond = (glm::pi<float>() * 2) * (1 / 60.0f);
-	glm::mat4 rot = glm::rotate(fRotAmountPerSecond * (float)dt, glm::vec3(0, 1, 0));
-
-	m_earthTransform = m_earthTransform * rot;
-
-
-	fRotAmountPerSecond = (glm::pi<float>() * 2) * (1 / 70.f); 
-	rot = glm::rotate(fRotAmountPerSecond * (float)dt, glm::vec3(0, 1, 0));
-	m_cloudTransform = m_cloudTransform * rot;
+	//float fRotAmountPerSecond = (glm::pi<float>() * 2) * (1 / 60.0f);
+	//glm::mat4 rot = glm::rotate(fRotAmountPerSecond * (float)dt, glm::vec3(0, 1, 0));
+	//
+	//m_earthTransform = m_earthTransform * rot;
+	//
+	//
+	//fRotAmountPerSecond = (glm::pi<float>() * 2) * (1 / 70.f); 
+	//rot = glm::rotate(fRotAmountPerSecond * (float)dt, glm::vec3(0, 1, 0));
+	//m_cloudTransform = m_cloudTransform * rot;
 
 	return true;
 }
@@ -82,10 +104,10 @@ void EarthApplication::Render()
 	//DisplayGrid(20);
 
 
-	m_pEarthMesh->Render(m_pCamera, m_earthTransform);
-	m_pCloudMesh->Render(m_pCamera, m_cloudTransform);
+	//m_pEarthMesh->Render(m_pCamera, m_earthTransform);
+	//m_pCloudMesh->Render(m_pCamera, m_cloudTransform);
 
-	Gizmos::addTransform(glm::mat4(1), 10.0f);
+	//Gizmos::addTransform(glm::mat4(1), 10.0f);
 
-	m_pSkybox->Render(m_pCamera, glm::mat4(1));
+	//m_pSkybox->Render(m_pCamera, glm::mat4(1));
 }
