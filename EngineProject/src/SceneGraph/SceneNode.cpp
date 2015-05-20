@@ -12,6 +12,7 @@ SceneNode::SceneNode()
 SceneNode::~SceneNode()
 {
 	std::cout << "Scene node destroyed" << std::endl;
+	m_pUserData = nullptr;
 	m_vChildNodes.clear();
 }
 
@@ -85,8 +86,10 @@ void SceneNode::SetLocalTransform(const glm::mat4& a_localTransform)
 
 void SceneNode::SetGlobalTransform(const glm::mat4& a_globalTransform)
 {
-	auto parentTransform = (m_pParentNode != nullptr) ? 
-							m_pParentNode->GetGlobalTransform() : glm::mat4(1);
+	auto parentNode = m_pParentNode.lock();
+
+	auto parentTransform = (parentNode != nullptr) ?
+		parentNode->GetGlobalTransform() : glm::mat4(1);
 
 	m_globalTransform = a_globalTransform;
 	m_localTransform = m_globalTransform * glm::inverse(parentTransform);
@@ -95,8 +98,11 @@ void SceneNode::SetGlobalTransform(const glm::mat4& a_globalTransform)
 
 void SceneNode::UpdateChildGlobalTransforms()
 {
-	auto parentTransform = (m_pParentNode != nullptr) ?
-		m_pParentNode->GetGlobalTransform() : glm::mat4(1);
+
+	auto parentNode = m_pParentNode.lock();
+
+	auto parentTransform = (parentNode != nullptr) ?
+		parentNode->GetGlobalTransform() : glm::mat4(1);
 
 	m_globalTransform = parentTransform * m_localTransform;
 	for (auto& child : m_vChildNodes)

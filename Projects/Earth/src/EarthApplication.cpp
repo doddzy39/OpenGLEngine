@@ -35,11 +35,12 @@ bool EarthApplication::Startup()
 
 	m_root = std::make_shared<SceneNode>();
 
-	std::unique_ptr<OBJMesh> pEarth = std::make_unique<OBJMesh>("EarthSurface/sphere.obj");
+	OBJMesh* pEarth = new OBJMesh("EarthSurface/sphere.obj");
 	//GLuint uiEarthShader = ShaderHandler::Get()->LoadShader("EarthShader", "Shaders/EarthShader_Normal.vert", "Shaders/EarthShader_Normal.frag");
 	//pEarth->GetMaterial()->SetShader(uiEarthShader);
 	//
-	m_root->AttachChild(pEarth->getOwningSceneNodeShardPtr());
+	std::shared_ptr<SceneNode> m_earth = pEarth->getOwningSceneNodeShardPtr();
+	m_root->AttachChild(m_earth);
 
 	//m_pCloudMesh = new OBJMesh("CloudSurface/sphere.obj");
 	//m_uiCloudShader = ShaderHandler::Get()->LoadShader("CloudShader", "Shaders/Clouds.vert", "Shaders/Clouds.frag");
@@ -77,8 +78,10 @@ bool EarthApplication::Startup()
 void EarthApplication::Shutdown()
 {
 	m_root = nullptr;
+
 	//delete m_pEarthMesh;
 	//delete m_pSkybox;
+		int i = 3;
 }
 
 bool EarthApplication::Update(double dt)

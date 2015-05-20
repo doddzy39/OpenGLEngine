@@ -27,3 +27,5 @@ EngineProject/Debug/
 *.opensdf
 *.sdf
 Projects/Earth/Debug/
+Debug/
+*.suo

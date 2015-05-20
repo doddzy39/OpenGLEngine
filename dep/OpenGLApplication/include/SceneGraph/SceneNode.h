@@ -19,7 +19,7 @@ public:
 
 	std::shared_ptr<SceneNode> Clone();
 
-	std::shared_ptr<SceneNode> GetParent() const { return m_pParentNode; }
+	std::weak_ptr<SceneNode> GetParent() const { return m_pParentNode; }
 	
 	void AttachChild(std::shared_ptr<SceneNode> a_pChildObject);
 	void AttachChild(SceneObject* a_pChildObject);
@@ -61,7 +61,7 @@ private:
 	glm::mat4 m_localTransform;
 	glm::mat4 m_globalTransform;
 
-	std::shared_ptr<SceneNode> m_pParentNode;
+	std::weak_ptr<SceneNode> m_pParentNode;
 	std::vector<std::shared_ptr<SceneNode>> m_vChildNodes;
 
 	std::unique_ptr<SceneObject> m_pUserData;
