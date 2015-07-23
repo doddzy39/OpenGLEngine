@@ -31,12 +31,12 @@ public:
 	unsigned int GetNumberOfChildren() const { return m_vChildNodes.size(); }
 	bool		 HasChildren() const { return !(m_vChildNodes.empty());  }
 	
-	std::shared_ptr<SceneNode> GetChildAt(int a_uiChildID);
-	std::shared_ptr<SceneNode> GetChildByName(std::string a_strName);
+	std::weak_ptr<SceneNode> GetChildAt(int a_uiChildID);
+	std::weak_ptr<SceneNode> GetChildByName(std::string a_strName);
 	
-	void		 AttachUserData(SceneObject* a_pUserData) { m_pUserData.reset(a_pUserData); }
-	SceneObject* GetAttachedUserData() const { return m_pUserData.get(); }
-	SceneObject* ReleaseUserData() { return m_pUserData.release(); }
+	void		 AttachUserData(SceneObject* a_pUserData)	{ m_pUserData = a_pUserData; }
+	SceneObject* GetAttachedUserData() const				{ return m_pUserData; }
+	void		 ReleaseUserData()							{ m_pUserData = nullptr; }
 
 	const glm::mat4& GetGlobalTransform() const { return m_globalTransform;  }
 	//glm::mat4&		 GetGlobalTransform() { return m_globalTransform;  }
@@ -64,5 +64,5 @@ private:
 	std::weak_ptr<SceneNode> m_pParentNode;
 	std::vector<std::shared_ptr<SceneNode>> m_vChildNodes;
 
-	std::unique_ptr<SceneObject> m_pUserData;
+	SceneObject* m_pUserData;
 };

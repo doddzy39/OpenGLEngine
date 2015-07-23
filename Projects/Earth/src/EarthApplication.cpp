@@ -12,6 +12,8 @@
 
 #include <memory.h>
 
+#include "DefaultMeshes/CubeMesh.h"
+
 
 bool EarthApplication::Startup()
 {
@@ -29,18 +31,23 @@ bool EarthApplication::Startup()
 
 	pCamera->SetupPerspective(glm::pi<float>() * 0.25f, 16.0f / 9.0f);
 	pCamera->LookAt(glm::vec3(10, 10, 10), glm::vec3(0, 0, 0), glm::vec3(0, 1, 0));
-
 	m_pCamera = pCamera;
-
 
 	m_root = std::make_shared<SceneNode>();
 
-	OBJMesh* pEarth = new OBJMesh("EarthSurface/sphere.obj");
+
+
+	//OBJMesh* pEarth = new OBJMesh("EarthSurface/sphere.obj");
+	Renderable* pEarth = new CubeMesh(5);
+	delete pEarth;
+	
 	//GLuint uiEarthShader = ShaderHandler::Get()->LoadShader("EarthShader", "Shaders/EarthShader_Normal.vert", "Shaders/EarthShader_Normal.frag");
 	//pEarth->GetMaterial()->SetShader(uiEarthShader);
 	//
-	std::shared_ptr<SceneNode> m_earth = pEarth->getOwningSceneNodeShardPtr();
-	m_root->AttachChild(m_earth);
+	//std::shared_ptr<SceneNode> m_earth = pEarth->GetSharedSceneNode();
+	//m_root->AttachChild(m_earth);
+
+	//m_root->AttachChild(pCamera->GetSharedSceneNode());
 
 	//m_pCloudMesh = new OBJMesh("CloudSurface/sphere.obj");
 	//m_uiCloudShader = ShaderHandler::Get()->LoadShader("CloudShader", "Shaders/Clouds.vert", "Shaders/Clouds.frag");
@@ -81,7 +88,7 @@ void EarthApplication::Shutdown()
 
 	//delete m_pEarthMesh;
 	//delete m_pSkybox;
-		int i = 3;
+	int i = 3;
 }
 
 bool EarthApplication::Update(double dt)

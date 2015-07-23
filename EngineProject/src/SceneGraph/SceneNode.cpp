@@ -2,17 +2,42 @@
 #include "LowLevelUtilityClasses/pow2assert.h"
 #include <iostream>
 
+template <typename T, typename U>
+inline bool equals(const std::weak_ptr<T>& t, const std::weak_ptr<U>& u)
+{
+	return !t.owner_before(u) && !u.owner_before(t);
+}
+
+template <typename T, typename U>
+bool operator==(const std::weak_ptr<T>& t, const std::weak_ptr<U>& u)
+{
+	return equals(t, u);
+}
+
+
 const std::shared_ptr<SceneNode> SceneNode::Invalid = std::make_shared<SceneNode>();
 
 SceneNode::SceneNode()
 {
-
+	m_pUserData = nullptr;
 }
 
 SceneNode::~SceneNode()
 {
 	std::cout << "Scene node destroyed" << std::endl;
-	m_pUserData = nullptr;
+	if(m_pUserData) delete m_pUserData;
+	for (auto& pChild : m_vChildNodes)
+	{
+		//Check to see if this node has been orphaned (only known about by the data that holds it)
+		//if so, then tell the owned data to not look at it anymore so that it is correclty destroyed
+		//This should also delete the data that is being looked at by the node.
+		unsigned int uiUseCount = pChild.use_count();
+		if (uiUseCount == 2)
+		{
+			pChild->GetAttachedUserData()->SetSceneNode(nullptr);
+		}
+	}
+
 	m_vChildNodes.clear();
 }
 
@@ -30,7 +55,7 @@ void SceneNode::AttachChild(std::shared_ptr<SceneNode> a_pChildObject)
 
 void SceneNode::AttachChild(SceneObject* a_pChildObject)
 {
-	m_vChildNodes.push_back(a_pChildObject->getOwningSceneNodeShardPtr());
+	m_vChildNodes.push_back(a_pChildObject->GetSharedSceneNode());
 }
 
 void SceneNode::DetachChild(unsigned int a_uiChildID)
@@ -59,13 +84,13 @@ void SceneNode::DetachChild(std::string a_strName)
 	}
 }
 
-std::shared_ptr<SceneNode> SceneNode::GetChildAt(int a_uiChildID)
+std::weak_ptr<SceneNode> SceneNode::GetChildAt(int a_uiChildID)
 {
 	auto it = m_vChildNodes.begin() + a_uiChildID;
 	return *it;
 }
 
-std::shared_ptr<SceneNode> SceneNode::GetChildByName(std::string a_strName)
+std::weak_ptr<SceneNode> SceneNode::GetChildByName(std::string a_strName)
 {
 	for (auto& child : m_vChildNodes)
 	{
@@ -105,8 +130,8 @@ void SceneNode::UpdateChildGlobalTransforms()
 		parentNode->GetGlobalTransform() : glm::mat4(1);
 
 	m_globalTransform = parentTransform * m_localTransform;
-	for (auto& child : m_vChildNodes)
+	for (auto& pChild : m_vChildNodes)
 	{
-		child->UpdateChildGlobalTransforms();
+		pChild->UpdateChildGlobalTransforms();
 	}
 }

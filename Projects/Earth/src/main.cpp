@@ -1,4 +1,5 @@
 #include "EarthApplication.h"
+#include <vld.h>
 
 int main()
 {

@@ -4,17 +4,20 @@
 
 class SceneNode;
 
-class SceneObject
+class SceneObject : public std::enable_shared_from_this<SceneObject>
 {
+	friend SceneNode;
+
 public:
 	SceneObject();
 	SceneObject(const SceneObject& a_rOther);
+	SceneObject(SceneObject&& a_rOther);
 	~SceneObject();
 
-	SceneNode* GetOwningSceneNode();
-	std::shared_ptr<SceneNode> getOwningSceneNodeShardPtr();
+	std::weak_ptr<SceneNode> GetSceneNode();
+	std::shared_ptr<SceneNode> GetSharedSceneNode();
 private:
-	void SetOwningSceneNode(std::shared_ptr<SceneNode> a_pOwner);
+	void SetSceneNode(std::shared_ptr<SceneNode> a_pOwner);
 
 	std::shared_ptr<SceneNode> m_pOwningSceneNode;
 };
